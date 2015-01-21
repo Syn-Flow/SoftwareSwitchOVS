@@ -1,0 +1,38 @@
+controller vs. kernel
+// Original OVS actions
+    OVS_ACTION_ATTR_OUTPUT,	      /* u32 port number. */
+	OVS_ACTION_ATTR_USERSPACE,    /* Nested OVS_USERSPACE_ATTR_*. */
+	OVS_ACTION_ATTR_SET,          /* One nested OVS_KEY_ATTR_*. */
+	    OVS_KEY_ATTR_ENCAP,	    /* Nested set of encapsulated attributes. */
+	    OVS_KEY_ATTR_PRIORITY,  /* u32 skb->priority */
+	    OVS_KEY_ATTR_IN_PORT,   /* u32 OVS dp port number */
+	    OVS_KEY_ATTR_ETHERNET,  /* struct ovs_key_ethernet */
+	    OVS_KEY_ATTR_VLAN,	/* be16 VLAN TCI */
+	    OVS_KEY_ATTR_ETHERTYPE,	/* be16 Ethernet type */
+	    OVS_KEY_ATTR_IPV4,      /* struct ovs_key_ipv4 */
+	    OVS_KEY_ATTR_IPV6,      /* struct ovs_key_ipv6 */
+	    OVS_KEY_ATTR_TCP,       /* struct ovs_key_tcp */
+		OVS_KEY_ATTR_UDP,       /* struct ovs_key_udp */
+		OVS_KEY_ATTR_ICMP,      /* struct ovs_key_icmp */
+		OVS_KEY_ATTR_ICMPV6,    /* struct ovs_key_icmpv6 */
+		OVS_KEY_ATTR_ARP,       /* struct ovs_key_arp */
+		OVS_KEY_ATTR_ND,        /* struct ovs_key_nd */
+		OVS_KEY_ATTR_SKB_MARK,  /* u32 skb mark */
+		OVS_KEY_ATTR_TUNNEL,	/* Nested set of ovs_tunnel attributes */
+		OVS_KEY_ATTR_SCTP,      /* struct ovs_key_sctp */
+		OVS_KEY_ATTR_TCP_FLAGS,	/* be16 TCP flags. */
+	OVS_ACTION_ATTR_PUSH_VLAN,    /* struct ovs_action_push_vlan. */
+	OVS_ACTION_ATTR_POP_VLAN,     /* No argument. */
+	OVS_ACTION_ATTR_SAMPLE,       /* Nested OVS_SAMPLE_ATTR_*. */
+	OVS_ACTION_ATTR_PUSH_MPLS,    /* struct ovs_action_push_mpls. */
+	OVS_ACTION_ATTR_POP_MPLS,     /* __be16 ethertype. */
+
+
+// New F3 actions
+	OVS_ACTION_ATTR_PUSH_F3_HEADER, /* Must appear in the edge switch. Nest struct ovs_f3_header_attr. */
+	OVS_ACTION_ATTR_POP_F3_HEADER, /* Must appear in the edge switch. NULL*/
+	OVS_ACTION_ATTR_PUSH_F3_AP, /* u32 */
+	OVS_ACTION_ATTR_POP_F3_AP, /* NULL */
+	OVS_ACTION_ATTR_SET_F3_TTL, /* u8 ttl number */
+	OVS_ACTION_ATTR_DEC_F3_TTL, /* NULL */
+	OVS_ACTION_ATTR_F3_JUMP, /* u32 */
